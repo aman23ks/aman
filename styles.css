@@ -1,0 +1,118 @@
+body{
+    overflow-x: hidden;
+}
+h1{
+    font-weight: bold;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 2rem;
+}
+h2{
+    font-weight: bold;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 1.5rem;
+}
+h3{
+    font-weight: 700;
+    font-family: "Montserrat" , sans-serif;
+    font-size: 1.3rem;
+}
+.text-muted{
+    color: #6c757d !important;
+    font-size: 1rem;
+}
+.fab,.fas{
+    font-size: 1.8rem;
+}
+
+.card{
+    background-color: white;
+    border-radius: 0.8rem;
+    box-shadow: 3px 3px 3px grey;
+}
+.card-icon{
+    text-align: center;
+     font-size: 3rem;
+     margin-top: 1.5rem;
+ }   
+a,a:hover{
+    color: black;
+}
+.work-link,.work-link:hover{
+    color: blue;
+}
+.contact{
+    font-size: 1.2rem;
+}
+.card-heading{
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#project-heading{
+    font-size: 2.5rem;
+}
+
+.info{
+    height: 500vh;
+    display: flex;
+}
+.info-title{
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 0 !important;
+}
+.info-pages{
+    width: 80%;
+}
+.info-div:nth-child(1){
+    background-color: bisque;
+      height: 240vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+}
+.info-div:nth-child(2) {
+    background-color: beige;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+}
+.info-div:nth-child(3) {
+    background-color: lightsalmon;
+      height: 240vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+}
+.info-div:nth-child(4) {
+    background-color: lime;
+      height: 240vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+}
+
+.info-div:nth-child(5) {
+    background-color: lemonchiffon;
+      height: 240vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+}
+.date{
+        display: inline-block;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        border-radius: 3px;
+  
+} 

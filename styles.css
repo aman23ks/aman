@@ -22,17 +22,25 @@ h3 {
     background-color: #fff;
     position: sticky;
     top: 0;
-
-}
-
-.left {
     width: 100%;
     height: 100vh;
+    animation: animatelefttoright 2s;
+}
+
+@keyframes animatelefttoright{
+    0%{
+        opacity: 0;
+        transform: translateX(-150px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .right {
     width: 100%;
-
+    animation: animatelefttoright 1s;
 }
 
 body {

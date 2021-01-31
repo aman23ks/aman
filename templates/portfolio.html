@@ -1,0 +1,22 @@
+{% extends 'bootstrap/base.html' %} {% import "bootstrap/wtf.html" as wtf %} {%
+block content %} {% include "header.html" %} {% if id == 1: %}
+<div style="padding: 20rem">
+  <h1>Project</h1>
+  {{ wtf.quick_form(form,novalidate=True, button_map={"submit":"primary"}) }}
+</div>
+{% endif %} {% if id == 2: %}
+<div style="padding: 20rem">
+  <h1>Work Experience</h1>
+  {{ wtf.quick_form(form,novalidate=True, button_map={"submit":"primary"}) }}
+</div>
+{% endif %} {% if id == 3: %}
+<div style="padding: 20rem">
+  <h1>Skills</h1>
+  {{ wtf.quick_form(form,novalidate=True, button_map={"submit":"primary"}) }}
+</div>
+{% endif %} {% if id == 4: %}
+<div style="padding: 20rem">
+  <h1>Certificates</h1>
+  {{ wtf.quick_form(form,novalidate=True, button_map={"submit":"primary"}) }}
+</div>
+{% endif %} {% include "footer.html" %} {% endblock %}

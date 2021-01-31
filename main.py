@@ -73,7 +73,7 @@ class Skill(db.Model):
 db.create_all()
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
     all_certificates = db.session.query(Certificate).all()
     all_skills = db.session.query(Skill).all()

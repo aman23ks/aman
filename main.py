@@ -4,7 +4,7 @@ from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from apiclient.discovery import build
 import smtplib
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import os
 
 app = Flask(__name__)
@@ -16,9 +16,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
     'DATABASE_URL', "sqlite:///portfolio.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-load_dotenv()
+# load_dotenv()
 
-apikey = os.getenv("API_KEY")
+apikey = os.environ.get("API_KEY")
 
 youtube = build("youtube", "v3", developerKey=apikey)
 
@@ -159,14 +159,14 @@ def mail():
         comment = request.form["comment"]
         message = f"Subject:Recieved a message from your portfolio website!\n\n name: {name}\nemail: {email}\ncomment: {comment}"
 
-        my_email = os.getenv("MY_EMAIL")
-        my_password = os.getenv("MY_PASSWORD")
+        my_email = os.environ.get("MY_EMAIL")
+        my_password = os.environ.get("MY_PASSWORD")
 
         connection = smtplib.SMTP("smtp.gmail.com", port=587)
         connection.starttls()
         connection.login(user=my_email, password=my_password)
         connection.sendmail(from_addr=my_email,
-                            to_addrs=os.getenv("MY_EMAIL"), msg=message.encode("utf-8"))
+                            to_addrs=os.environ.get("MY_EMAIL"), msg=message.encode("utf-8"))
         # connection.close()
     return redirect(url_for("home"))
 

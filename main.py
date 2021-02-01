@@ -8,7 +8,7 @@ import smtplib
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", "vnwrljgbjfnvb")
 Bootstrap(app)
 
 # Connect to DB
@@ -18,7 +18,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 # load_dotenv()
 
-apikey = os.environ.get("API_KEY")
+apikey = os.environ.get("API_KEY", "AIzaSyAYx6gpf9qwQKe8KUmL4MDknOrmmIzLhfg")
 
 youtube = build("youtube", "v3", developerKey=apikey)
 
@@ -159,8 +159,8 @@ def mail():
         comment = request.form["comment"]
         message = f"Subject:Recieved a message from your portfolio website!\n\n name: {name}\nemail: {email}\ncomment: {comment}"
 
-        my_email = os.environ.get("MY_EMAIL")
-        my_password = os.environ.get("MY_PASSWORD")
+        my_email = os.environ.get("MY_EMAIL", "aman23ks@gmail.com")
+        my_password = os.environ.get("MY_PASSWORD", "Anamika351@gm")
 
         connection = smtplib.SMTP("smtp.gmail.com", port=587)
         connection.starttls()

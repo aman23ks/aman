@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from forms import CreateProjectForm, WorkExperience, Certificates, Skills, User
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-from apiclient.discovery import build
+from googleapiclient.discovery import build
 import smtplib
 # from dotenv import load_dotenv
 import os

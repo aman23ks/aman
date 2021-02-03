@@ -6,7 +6,7 @@ import smtplib
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", "vnwrljgbjfnvb")
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 Bootstrap(app)
 
 # Connect to DB
@@ -149,8 +149,8 @@ def mail():
         comment = request.form["comment"]
         message = f"Subject: Recieved a message from your portfolio website!\n\n name: {name}\nemail: {email}\ncomment: {comment}"
 
-        my_email = os.environ.get("MY_EMAIL", "aman23ks@yahoo.com")
-        my_password = os.environ.get("MY_PASSWORD", "dwowjkdytlfbhbvk")
+        my_email = os.environ.get("MY_EMAIL")
+        my_password = os.environ.get("MY_PASSWORD")
 
         connection = smtplib.SMTP("smtp.mail.yahoo.com", port=587)
         connection.starttls()

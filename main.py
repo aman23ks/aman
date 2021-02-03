@@ -12,11 +12,11 @@ app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", "vnwrljgbjfnvb")
 Bootstrap(app)
 
 # Connect to DB
-# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-#     'DATABASE_URL', "sqlite:///portfolio.db")
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# db = SQLAlchemy(app)
-# # load_dotenv()
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    'DATABASE_URL', "sqlite:///portfolio.db")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+# load_dotenv()
 
 # apikey = os.environ.get("API_KEY", "AIzaSyAYx6gpf9qwQKe8KUmL4MDknOrmmIzLhfg")
 

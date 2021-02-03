@@ -2,9 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from forms import CreateProjectForm, WorkExperience, Certificates, Skills, User
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-# from googleapiclient.discovery import build
 import smtplib
-# from dotenv import load_dotenv
 import os
 
 app = Flask(__name__)
@@ -16,21 +14,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
     'DATABASE_URL', "sqlite:///portfolio.db")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-# load_dotenv()
-
-# apikey = os.environ.get("API_KEY", "AIzaSyAYx6gpf9qwQKe8KUmL4MDknOrmmIzLhfg")
-
-# youtube = build("youtube", "v3", developerKey=apikey)
-
-# req = youtube.search().list(q='Incognito Relationships',
-#                             part='snippet', type='video')
-# res = req.execute()
-# incognito_relationships = res["items"][0]['id']['videoId']
-
-# request = youtube.search().list(q='Karma-A Short Film Aman Shrivastava',
-#                                 part='snippet', type='video')
-# response = request.execute()
-# karma = response["items"][0]["id"]["videoId"]
 
 
 class Project(db.Model):
@@ -160,13 +143,15 @@ def mail():
         message = f"Subject:Recieved a message from your portfolio website!\n\n name: {name}\nemail: {email}\ncomment: {comment}"
 
         my_email = os.environ.get("MY_EMAIL", "aman23ks@gmail.com")
+        print(type(my_email))
         my_password = os.environ.get("MY_PASSWORD", "Anamika351@gm")
 
         connection = smtplib.SMTP("smtp.gmail.com", port=587)
         connection.starttls()
         connection.login(user=my_email, password=my_password)
-        connection.sendmail(from_addr=my_email,
-                            to_addrs=os.environ.get("MY_EMAIL"), msg=message.encode("utf-8"))
+        print(my_email)
+        connection.sendmail(from_addr=[my_email],
+                            to_addrs=[os.environ.get("MY_EMAIL")], msg=message.encode("utf-8"))
         # connection.close()
     return redirect(url_for("home"))
 

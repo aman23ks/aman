@@ -70,7 +70,7 @@ class Skill(db.Model):
     frameworks = db.Column(db.String(1000))
 
 
-db.create_all()
+# db.create_all()
 
 
 @app.route("/", methods=["GET", "POST"])

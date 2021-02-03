@@ -40,7 +40,7 @@ class Skills(FlaskForm):
     submit = SubmitField("Submit")
 
 
-class User(FlaskForm):
-    username = StringField("Enter Name", validators=[DataRequired()])
+class Admin(FlaskForm):
+    username = StringField("Enter Username", validators=[DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     submit = SubmitField("Submit")

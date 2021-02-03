@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from forms import CreateProjectForm, WorkExperience, Certificates, Skills, User
+from forms import CreateProjectForm, WorkExperience, Certificates, Skills, Admin
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 import smtplib
@@ -51,6 +51,13 @@ class Skill(db.Model):
     databases = db.Column(db.String(1000))
     web = db.Column(db.String(1000))
     frameworks = db.Column(db.String(1000))
+
+
+class UserAdmin(db.Model):
+    __tablename__ = "admin"
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(1000))
+    password = db.Column(db.String(1000))
 
 
 # db.create_all()
@@ -140,19 +147,18 @@ def mail():
         name = request.form["name"]
         email = request.form["email"]
         comment = request.form["comment"]
-        message = f"Subject:Recieved a message from your portfolio website!\n\n name: {name}\nemail: {email}\ncomment: {comment}"
+        message = f"Subject: Recieved a message from your portfolio website!\n\n name: {name}\nemail: {email}\ncomment: {comment}"
 
-        my_email = os.environ.get("MY_EMAIL", "aman23ks@gmail.com")
-        print(type(my_email))
-        my_password = os.environ.get("MY_PASSWORD", "Anamika351@gm")
+        my_email = os.environ.get("MY_EMAIL", "aman23ks@yahoo.com")
+        my_password = os.environ.get("MY_PASSWORD", "dwowjkdytlfbhbvk")
 
-        connection = smtplib.SMTP("smtp.gmail.com", port=587)
+        connection = smtplib.SMTP("smtp.mail.yahoo.com", port=587)
         connection.starttls()
         connection.login(user=my_email, password=my_password)
-        print(my_email)
-        connection.sendmail(from_addr=[my_email],
-                            to_addrs=[os.environ.get("MY_EMAIL")], msg=message.encode("utf-8"))
-        # connection.close()
+        connection.sendmail(from_addr=my_email,
+                            to_addrs="aman23ks@gmail.com", msg=f"Subject:Message from your Portfolio Website!\n\n{message}")
+        connection.close()
+
     return redirect(url_for("home"))
 
 

@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from forms import CreateProjectForm, WorkExperience, Certificates, Skills, User
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-from googleapiclient.discovery import build
+# from googleapiclient.discovery import build
 import smtplib
 # from dotenv import load_dotenv
 import os
@@ -12,25 +12,25 @@ app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY", "vnwrljgbjfnvb")
 Bootstrap(app)
 
 # Connect to DB
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
-    'DATABASE_URL', "sqlite:///portfolio.db")
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-# load_dotenv()
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+#     'DATABASE_URL', "sqlite:///portfolio.db")
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# db = SQLAlchemy(app)
+# # load_dotenv()
 
-apikey = os.environ.get("API_KEY", "AIzaSyAYx6gpf9qwQKe8KUmL4MDknOrmmIzLhfg")
+# apikey = os.environ.get("API_KEY", "AIzaSyAYx6gpf9qwQKe8KUmL4MDknOrmmIzLhfg")
 
-youtube = build("youtube", "v3", developerKey=apikey)
+# youtube = build("youtube", "v3", developerKey=apikey)
 
-req = youtube.search().list(q='Incognito Relationships',
-                            part='snippet', type='video')
-res = req.execute()
-incognito_relationships = res["items"][0]['id']['videoId']
+# req = youtube.search().list(q='Incognito Relationships',
+#                             part='snippet', type='video')
+# res = req.execute()
+# incognito_relationships = res["items"][0]['id']['videoId']
 
-request = youtube.search().list(q='Karma-A Short Film Aman Shrivastava',
-                                part='snippet', type='video')
-response = request.execute()
-karma = response["items"][0]["id"]["videoId"]
+# request = youtube.search().list(q='Karma-A Short Film Aman Shrivastava',
+#                                 part='snippet', type='video')
+# response = request.execute()
+# karma = response["items"][0]["id"]["videoId"]
 
 
 class Project(db.Model):
@@ -79,7 +79,7 @@ def home():
     all_skills = db.session.query(Skill).all()
     all_work_exp = db.session.query(WorkExp).all()
     all_projects = db.session.query(Project).all()
-    return render_template("index.html", incognito_relationships=incognito_relationships, karma=karma, all_certificates=all_certificates, all_skills=all_skills, all_work_exp=all_work_exp, all_projects=all_projects)
+    return render_template("index.html", all_certificates=all_certificates, all_skills=all_skills, all_work_exp=all_work_exp, all_projects=all_projects)
 
 
 @app.route("/aman/project", methods=["GET", "POST"])
